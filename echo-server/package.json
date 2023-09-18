@@ -1,0 +1,11 @@
+{
+  "name": "echo-server",
+  "version": "1.0.0",
+  "description": "server go",
+  "main": "main.go",
+  "scripts": {
+    "server": "nodemon --exec go run main.go --signal SIGTERM"
+  },
+  "author": "german",
+  "license": "ISC"
+}

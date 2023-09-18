@@ -1,0 +1,36 @@
+<div class="container">
+
+    <div class="row mt-5">
+        <!--CONSULTAR USUARIO-->
+        <div class="col-md-9">
+            <div >
+                <form (ngSubmit)="onSubmit()" #filterForm="ngForm">
+                    <div class="row ">
+                        <div class="col-md-11">
+                            <input type="number" class="form-control" [(ngModel)]="numId" name="numId"
+                                placeholder="Buscar usuario por identificacion" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-info">Buscar</button>
+                        </div>
+                    </div>
+
+                </form>
+           </div> 
+        </div>
+
+        <!--ADICIONAR USUARIO-->
+        <div class="col-md-3">
+            <app-registro [titleBtn]="'+ Usuario'" [dptos]="dptos" [modalTitle] ="'Adicionar usuario'"
+                [classBtn]="'btn btn-primary'" (reloadUser)="getUsuarios()" [targetModal]="'#staticBackdrop'"></app-registro>
+        </div>
+
+    </div>
+
+    <!-- TABLA DE REGISTRO DE USUARIOS -->
+    <div>
+        <app-griduser (deleteUserId)="deleteUser($event)" (reloadUser)="getUsuarios()" [users]="users" [dptos]="dptos"></app-griduser>
+    </div>
+</div>
