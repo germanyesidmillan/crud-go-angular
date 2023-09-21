@@ -8,70 +8,59 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PrincipalComponent implements OnInit {
 
-  users:any = [];
-  dptos:any = [];
+  users: any = [];
+  dptos: any = [];
 
-  numId:number;
+  numId: number;
 
-  constructor(private s_user:UserService) {
-    console.log("constructor")
-   }
+  constructor(private s_user: UserService) { }
 
   ngOnInit(): void {
-    console.log("oninit")
     this.getUsuarios();
     this.getDepartments()
   }
 
 
-  getUsuarios(){
-    console.log("getUsers--principal")
-    this.users =[];
-    this.s_user.getUser().subscribe(resp=>{
-    //this.s_user.getUsersDpt().subscribe(resp=>{
-      console.log("users-DEPTO", resp);
+  getUsuarios() {
+    this.users = [];
+    this.s_user.getUser().subscribe(resp => {
       this.users = resp;
-    },(error)=>{
-      console.log('Error',error);
-      alert("Erroren el servidor\n"+error.message);
+    }, (error) => {
+      console.log('Error', error);
+      alert("Erroren el servidor\n" + error.message);
     });
   }
 
-  getDepartments(){
-    this.s_user.getDepartments().subscribe(resp=>{
-      console.log("departments-principal==>",resp)
+  getDepartments() {
+    this.s_user.getDepartments().subscribe(resp => {
       this.dptos = resp;
     });
   }
 
-  getUserNumId(numId:number){
+  getUserNumId(numId: number) {
     this.users = [];
-    this.s_user.getUserByNumId(numId).subscribe((resp)=>{
+    this.s_user.getUserByNumId(numId).subscribe((resp) => {
       this.users = [resp];
-      console.log('getUserByNumId',resp);
-    }, (err)=>{
-      console.log('Error',err)
-      if(err.status){
+    }, (err) => {
+      if (err.status) {
         alert(err.error);
       }
     })
   }
 
-  onSubmit(){
+  onSubmit() {
 
-    console.log("onsubmi",this.numId)
-
-    if(this.numId == null){
+    if (this.numId == null) {
       this.getUsuarios();
-    }else{
+    } else {
       this.getUserNumId(this.numId)
     }
   }
 
-  deleteUser(id:number){
+  deleteUser(id: number) {
     console.log('id-papa-principal');
 
   }
-  
+
 
 }

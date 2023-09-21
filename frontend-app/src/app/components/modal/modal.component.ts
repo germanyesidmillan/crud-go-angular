@@ -21,10 +21,6 @@ export class ModalComponent implements OnInit {
 
 
   deleteUser(id: number) {
-    //let element = document.getElementById("exampleModal");
-    console.log('id-modal', id);
-    //element.style.display = "none";
-    //element.classList.remove("show");
     this.deleteUserId.emit(this.dato);
   }
 

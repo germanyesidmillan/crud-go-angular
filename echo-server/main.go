@@ -2,9 +2,6 @@ package main
 
 import (
 	"echo-server/db"
-	//"os"
-
-	//"echo-server/models"
 	"echo-server/routes"
 	"fmt"
 	"net/http"
@@ -46,10 +43,6 @@ func handleCORS(next http.Handler) http.Handler {
 func main() {
 	fmt.Println("hola mundo")
 
-	//dbHost := os.Getenv("host")
-
-	//print("dbHost: " + dbHost)
-
 	//BD
 	db.DBConnection()
 
@@ -60,12 +53,9 @@ func main() {
 
 	// Echo instance
 	e := echo.New()
-	//e.Use(validar)
-
 	e.Use(middleware.CORS())
 
 	routes.Rutas(e)
-
 	// Middleware
 	//e.Use(middleware.Logger())
 	//e.Use(middleware.Recover())

@@ -28,43 +28,21 @@ export class GriduserComponent implements OnInit {
 
     let elemtId = 'exampleModal'+id;
     let butonId = 'btnBorrar'+id;
-    //let modal = document.getElementById(elemtId)  as HTMLButtonElement;
     let boton = document.getElementById(butonId)  as HTMLButtonElement;
-    console.log('element-grid',elemtId,boton);
-
+  
   
 
-    //boton.disabled = true;
-    //alert("Registro eliminado con exito!")
-  
-    console.log($('#'+elemtId).val());
     
     this.s_user.deleteUserByid(id).subscribe(resp=>{
-      console.log('resp-eliminacion-->',resp);
       alert("Registro eliminado con exito!")
       $('#'+elemtId).modal('hide');
       this.getUsuarios();
-    
       
     }, (error)=>{
       alert(error.message);
     });
 
-    console.log("first--papa-grilla")
-    console.log('id', id, boton);
   }
-
-  /*deleteUserId(id:number){
-
-
-   // this.s_user.
-
-//if(id != null){
-      console.log("first--papa-grilla",id);
-    //}
-
-    console.log('id',id);
-  }*/
 
   getUsuarios() {
     this.reloadUser.emit();
