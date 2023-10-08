@@ -42,6 +42,9 @@ func Rutas(e *echo.Echo) {
 	e.GET("/department/:id", controller.GetDepartment)
 	e.POST("/department", controller.CreateDepartment)
 	e.PUT("/department/:id", controller.UpdateDepartment)
-	e.DELETE("/departments/:id", controller.DeleteDepartment)
+	e.DELETE("/department/:id", controller.DeleteDepartment)
+
+	//DESCARGAR ARCHIVO
+	e.POST("/download", controller.ExcelFile)
 
 }
